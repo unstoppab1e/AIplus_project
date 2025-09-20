@@ -1,0 +1,41 @@
+# Git
+.git
+.gitignore
+
+# Documentation
+README.md
+*.md
+
+# Tests and scripts
+test-docker.sh
+scripts/
+coverage.out
+coverage.html
+
+# Build artifacts
+bin/
+dist/
+tmp/
+
+# Development files
+.env*
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Go test cache
+.cache/
+
+# Air live reload
+tmp/
+
+# Dependencies (будут загружены в контейнере)
+vendor/

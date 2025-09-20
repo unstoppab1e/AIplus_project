@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  # PostgreSQL база данных
+  db:
+    image: postgres:15
+    container_name: employee_db
+    environment:
+      POSTGRES_DB: employees
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - employee_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Наш веб-сервис
+  app:
+    build: .
+    container_name: employee_service
+    environment:
+      DATABASE_URL: "postgres://postgres:password@db:5432/employees?sslmode=disable"
+      PORT: "8080"
+      MIGRATIONS_PATH: "/app/migrations"
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - employee_network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+networks:
+  employee_network:
+    driver: bridge
