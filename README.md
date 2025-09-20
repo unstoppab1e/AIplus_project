@@ -62,9 +62,9 @@ POST /api/v1/employees
 Content-Type: application/json
 
 {
-  "full_name": "Иван Иванов",
-  "phone": "+7 999 123 45 67",
-  "city": "Москва"
+  "full_name": "Айгүл Серікқызы",
+  "phone": "+7 701 987 65 43",
+  "city": "Алматы"
 }
 ```
 
@@ -83,10 +83,10 @@ GET /api/v1/employees/{id}
 PUT /api/v1/employees/{id}
 Content-Type: application/json
 
-{
-  "full_name": "Петр Петров",
-  "phone": "+7 999 987 65 43",
-  "city": "Санкт-Петербург"
+'{
+  "full_name": "Әлихан Әбдірахман",
+  "phone": "+7 777 123 45 67",
+  "city": "Астана"
 }
 ```
 
